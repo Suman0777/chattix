@@ -34,3 +34,38 @@ export const signup = async ()=>{
         })
     }
 }
+
+
+//controller to login a user
+export const login = async(req, res)=>{
+    try {
+        const { email, password} = req.body;
+        const userData = await User.findOne({email});
+
+        const ispassCorrect = await bcrypt.compare(password, userData.password);
+
+        if(!ispassCorrect){
+            return res.json({success: false, message: "Invalid credentails"});
+        }
+
+        const token = generateToken(userData._id)
+
+        res.json({success: true, userData, token, message: "Login Successfully"});
+
+    } catch (error) {
+        console.log(error);
+        res.json({
+            success: false,
+            message: "User not Created"
+        })
+    }
+}
+
+//Cheacking the authentication of USer
+
+export const checkAuth = (req, res)=>{
+    res.json({
+        success: true,
+        user: req.user
+    })
+}
