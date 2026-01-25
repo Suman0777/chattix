@@ -1,5 +1,4 @@
 // Get all users except the logged in user
-import { jsx } from "react/jsx-runtime";
 import Message from "../models/message.js";
 import User from "../models/User.js";
 import cloudary from "../lib/Clodinary.js";
