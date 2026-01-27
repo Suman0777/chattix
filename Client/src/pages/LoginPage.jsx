@@ -23,7 +23,7 @@ const LoginPage = () => {
   return (
     <div className='min-h-screen bg-cover bg-center  flex items-center justify-center gap-8 sm:justify-evenly max-sm:flex-col backdrop-blur-2xl '>
         {/*------------Left-----------*/}
-        <img src={assets.logo_big} alt="" className='w-[33vw] max-w-[1150px]
+        <img src={assets.logo_big} alt="" className='w-[33vw] max-w-287.5
 '/>
         {/*------------right-----------*/}
         <form onSubmit={onsubmitHaddle} className='border-2 bg-white/8 text-white border-gray-500 p-6 flex flex-col gap-6 rounded-lg shadow-lg '>
@@ -63,7 +63,7 @@ const LoginPage = () => {
                   )
                } 
 
-               <button type='submit' className='w-full py-3 bg-gradient-to-r from-purple-400 to-violet-600 text-white rounded-md cursor-pointer'>
+               <button type='submit' className='w-full py-3 bg-linear-to-r from-purple-400 to-violet-600 text-white rounded-md cursor-pointer'>
                 {currState === "Sign up" ? "Create Account" : "Login Now"}
                </button>
 
