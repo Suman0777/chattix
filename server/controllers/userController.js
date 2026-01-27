@@ -4,7 +4,7 @@ import User from "../models/User.js";
 import { generateToken } from "../lib/util.js";
 import cloudary from "../lib/Clodinary.js";
 
-export const signup = async ()=>{
+export const signup = async (req, res)=>{
     const {fullName, email, password, bio} = req.body;
 
     try{

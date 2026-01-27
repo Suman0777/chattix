@@ -12,12 +12,14 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children })=>{
 
     const [token , setToken ] = useState(localStorage.getItem("token"))
-    const [authUser , setauthUser ] = useState(localStorage.getItem(null))
-    const [OnelineUser , setOnelineUser ] = useState(localStorage.getItem([]))
-    const [socket , setSocket ] = useState(localStorage.getItem(null))
+    const [authUser , setauthUser ] = useState(null)
+    const [OnelineUser , setOnelineUser ] = useState([])
+    const [socket , setSocket ] = useState(null)
+    const [loading , setLoading ] = useState(true)
 
-    //Checking if is Authenticated or not if so , set the user data and connect the socket 
-    const checkauth = async () =>{
+//Checking if is Authenticated or not if so , set the user data and connect the socket 
+    
+const checkauth = async () =>{
         try {
             const {data} = await axios.get("/api/auth/check")
             if(data.success){
@@ -25,11 +27,16 @@ export const AuthProvider = ({ children })=>{
                 connectScoket(data.user)
             }
         } catch (error) {
-            toast.error(error.message)
+            // Only show error if user has a token but it's invalid
+            if(token){
+                toast.error(error.message)
+            }
+        } finally {
+            setLoading(false)
         }
     }
 
-    //Login function to handle user authentication
+    //Login function to handle user authentication and socket connection
 
     const login = async (state, credentials)=>{
         try {
@@ -95,6 +102,7 @@ export const AuthProvider = ({ children })=>{
     useEffect(()=>{
         if(token){
             axios.defaults.headers.common["token"] = token;
+            
         }
         checkauth();
     }, [])
@@ -105,7 +113,8 @@ export const AuthProvider = ({ children })=>{
         socket,
         login,
         logout,
-        updateProfile
+        updateProfile,
+        loading
     }
 
     return (

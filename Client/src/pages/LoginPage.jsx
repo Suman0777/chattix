@@ -1,14 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import assets from '../assets/assets'
+import { AuthContext } from '../../context/AuthContext';
 
 const LoginPage = () => {
 
   const [currState, setCurrState] = useState("Sign up");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
-  const [pasword, setpasword] = useState("");
+  const [password, setPassword] = useState("");
   const [bio, setBio] = useState("");
   const [isDataSubmitted, setisDataSubmitted] = useState(false);
+
+  const {login} = useContext(AuthContext);
 
   const onsubmitHaddle = (event)=>{
     
@@ -18,6 +21,7 @@ const LoginPage = () => {
       setisDataSubmitted(true)
       return;
     }
+    login(currState === "Sign up" ? "signup": "login", {fullName, email, password, bio})
   }
 
   return (
@@ -46,7 +50,7 @@ const LoginPage = () => {
                     type="email" placeholder='Email Address' 
                     required className='p-2 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500'/>
 
-                    <input onChange={(e)=> setpasword(e.target.value)} value={pasword}
+                    <input onChange={(e)=> setPassword(e.target.value)} value={password}
                     type="password" placeholder='Enter The Password' 
                     required className='p-2 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500'/>
                   </>
