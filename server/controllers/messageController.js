@@ -3,7 +3,6 @@ import Message from "../models/message.js";
 import User from "../models/User.js";
 import cloudary from "../lib/Clodinary.js";
 import { io, userSocketMap } from "../server.js";
-import messageRouter from "../routes/messageRoute.js";
 
 
 export const getUserForSideBar = async (req, res)=>{
