@@ -96,7 +96,8 @@ const ChatProvider = ({ children })=>{
         sendMessage,
         setSelectedUser,
         unseenMessages,
-        setUnseenMessages
+        setUnseenMessages,
+        getMessages
     }
 
     return (
