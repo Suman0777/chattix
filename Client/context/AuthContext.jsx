@@ -7,7 +7,7 @@ const backendUrl = import.meta.env.VITE_BACKEND_URL
 axios.defaults.baseURL = backendUrl;
 
 
-export const AuthContext = createContext();
+export const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children })=>{
 
