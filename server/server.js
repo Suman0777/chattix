@@ -50,12 +50,12 @@ app.use("/api/messages", messageRouter);
 //Mongobd 
 await connectDB();
 
-if(process.env.NODE_ENV !== "production"){
-    
-    const PORT = process.env.PORT || 5400;
-    server.listen(PORT, ()=>{
-    console.log(`The Server is live on ${PORT}`)
-    })
+const PORT = process.env.PORT || 5400;
+
+if (process.env.NODE_ENV !== "production") {
+  server.listen(PORT, () => {
+    console.log(`Server running on ${PORT}`);
+  });
 }
 
 export default server;
