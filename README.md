@@ -1,6 +1,6 @@
 # 📸 Chattix
 
-![Chattix Signup Page](./assets/signup-screen.png)
+![Chattix Signup Page](./Client/src/assets/signup-screen.png)
 
 > Chattix is a modern, sleek, and responsive real-time chat application with authentication and beautiful UI components.
 
