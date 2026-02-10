@@ -36,14 +36,6 @@ Chattix is a full-stack messaging app built with modern web technologies. It pro
 
 ---
 
-## 🖼 Screenshots
-
-### 📌 Signup Page
-![Chattix Signup Page](./assets/signup-screen.png)
-
-*(Add more screenshots in `/assets` and include them here!)*
-
----
 
 ## 🚀 Getting Started
 
